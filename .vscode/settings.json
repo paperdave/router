@@ -28,6 +28,9 @@
     "span": "c",
     "valarray": "c",
     "param.h": "c",
-    "native-router.h": "c"
+    "native-router.h": "c",
+    "param-buffer.h": "c",
+    "add.h": "c",
+    "stdio.h": "c"
   }
 }

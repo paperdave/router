@@ -3,6 +3,14 @@ import { FFIType, dlopen, suffix } from "bun:ffi";
 import path from "path";
 
 const library = dlopen(path.join(import.meta.dir, `router.${suffix}`), {
+  router_add: {
+    args: [FFIType.pointer, FFIType.cstring, FFIType.u32],
+    returns: FFIType.i32,
+  },
+  router_find: {
+    args: [FFIType.pointer, FFIType.cstring],
+    returns: FFIType.u32,
+  },
   jserror_get: {
     returns: FFIType.cstring,
   },
@@ -11,14 +19,6 @@ const library = dlopen(path.join(import.meta.dir, `router.${suffix}`), {
   },
   parambuf_free: {
 
-  },
-  router_add: {
-    args: [FFIType.pointer, FFIType.cstring, FFIType.u32],
-    returns: FFIType.i32,
-  },
-  router_find: {
-    args: [FFIType.pointer, FFIType.cstring],
-    returns: FFIType.u32,
   },
   router_print: {
     args: [FFIType.pointer],

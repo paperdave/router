@@ -1,27 +1,14 @@
-// HTTP router for JS written in C using FFI.
-// Based on memoirist by SaltyAOM, which is a fork of @medley/router by nwoltman
-// Uses a Radix Tree to store routes and their handlers.
-#include "native-router.h"
+
+#include "add.h"
 #include "jserror.h"
+#include "param-buffer.h"
+#include "param.h"
+#include "print.h"
+#include "tree.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 #include <string.h>
-#include "param.h"
-#include "tree.h"
-#include "print.h"
-
-#define RETURN_BUFFER_SIZE 2048
-char* parambuf;
-
-void* parambuf_init() {
-  parambuf = malloc(RETURN_BUFFER_SIZE);
-  return parambuf;
-}
-
-void parambuf_free() {
-  free(parambuf);
-}
 
 int node_add(node_t** ref, route_id_t id, char* route, size_t route_len);
 
@@ -183,29 +170,4 @@ int router_add(router_t* router, char* route, route_id_t id) {
   }
 
   return node_add(&router->children[radix], id, route + 1, route_len - 1);
-}
-
-route_id_t router_find(router_t* router, char* path) {
-  return jserror("Not Implemented");
-}
-
-int main() {
-  parambuf_init();
-
-  router_t* router = router_new();
-  router_add(router, "GET/users/", 1);
-  router_add(router, "GET/users/:id/name/:again", 2);
-  router_print(router);
-  // router_free(router);
-
-  // printf("---\n");
-
-  // router = router_new();
-  // router_add(router, "GET/users/:id", 2);
-  // router_print(router);
-  // router_add(router, "GET/users/", 1);
-  // router_print(router);
-  // // router_free(router);
-
-  return 0;
 }

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@paperdave/utils": "^1.6.1",
-    "memoirist": "^0.1.3"
+    "memoirist": "^0.1.3",
+    "mitata": "^0.1.6"
   }
 }
