@@ -1,5 +1,7 @@
-import { Router } from "./src";
+import { NativeRouter } from "./src";
 
-const x = new Router<string>();
+// memoirist-like router written in c + ffi
+const x = new NativeRouter<string>();
 x.add("GET", "/api/ffi", "first");
 x.add("GET", "/api/abc", "second");
+console.log(x.toJSON());

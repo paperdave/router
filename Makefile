@@ -1,25 +1,25 @@
-C_SOURCES = $(wildcard src/lib/*.c)
-OBJECTS = $(patsubst src/lib/%.c,dist/lib/%.o,$(C_SOURCES))
+C_SOURCES = $(wildcard src/*.c)
+OBJECTS = $(patsubst src/%.c,dist/%.o,$(C_SOURCES))
 LINKER_FLAGS=
 
 native-router:
 	@make -B all --no-print-directory
 
-all: src/lib/router.so src/lib/index.ts src/lib/router
+all: src/router.so src/index.ts router
 clean:
-	rm -fr src/lib/router.so dist/*
+	rm -fr src/router.so dist/*
 
 dist:
-	mkdir -p dist/lib
+	mkdir -p dist
 
-src/lib/router.so: $(OBJECTS)
+src/router.so: $(OBJECTS)
 	clang -shared -o $@ $(OBJECTS) $(LINKER_FLAGS) -g
 
-src/lib/router: $(OBJECTS)
+router: $(OBJECTS)
 	clang -o $@ $(OBJECTS) $(LINKER_FLAGS) -g
 
-dist/lib/%.o: src/lib/%.c dist
+dist/%.o: src/%.c dist
 	clang -fPIC -c -o $@ $< -g
 
-src/lib/index.ts: $(C_SOURCES)
-	bun src/lib/codegen.ts $(C_SOURCES)
+src/index.ts: $(C_SOURCES)
+	bun src/codegen.ts $(C_SOURCES)

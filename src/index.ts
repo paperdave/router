@@ -1,5 +1,5 @@
 import { Pointer, toArrayBuffer } from "bun:ffi";
-import { ffi } from "./lib";
+import { ffi } from "./binding";
 
 const td = new TextDecoder();
 const te = new TextEncoder();
@@ -30,7 +30,7 @@ export interface JSONNode<T> {
 }
 export type JSONRouter<T> = Record<string, JSONNode<T>>;
 
-export class Router<T> {
+export class NativeRouter<T> {
   #ptr: Pointer;
   #routes: { store: T; paramNames: string[] }[] = [];
 

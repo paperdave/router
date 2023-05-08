@@ -92,4 +92,4 @@ if (!library.symbols) {
 export const ffi = library.symbols;
 `;
 
-Bun.write(import.meta.dir + "/index.ts", code);
+Bun.write(import.meta.dir + "/binding.ts", code);
