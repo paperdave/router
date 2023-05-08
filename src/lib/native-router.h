@@ -1,33 +1,10 @@
 #pragma once
 #include <stdbool.h>
-
-typedef char radix_t;
-typedef unsigned int route_id_t;
-
-#define node_t struct node
-struct node {
-  char* part; // the part of this route
-  unsigned int part_len; // the length of the part
-  route_id_t id; // the id of a route handler, if exists. 0 if none.
-  node_t* children[61]; // 61 is the number of possible radixes
-  node_t* param; // if a param exists, it is stored here
-  node_t* wildcard; // if a param exists, it is stored here
-};
-
-#define router_t struct router
-struct router {
-  node_t* children[61];
-};
+#include "tree.h"
 
 /** call once to setup. you are returned a pointer to the "param buffer" */
 void* parambuf_init();
 void parambuf_free();
-
-/** create a new router */
-router_t* router_new();
-
-/** free a router */
-void router_free(router_t* router);
 
 /** add a route to a router
  * 

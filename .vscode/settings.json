@@ -26,6 +26,8 @@
     "format": "c",
     "initializer_list": "c",
     "span": "c",
-    "valarray": "c"
+    "valarray": "c",
+    "param.h": "c",
+    "native-router.h": "c"
   }
 }

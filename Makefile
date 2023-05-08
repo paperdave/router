@@ -3,7 +3,7 @@ OBJECTS = $(patsubst src/lib/%.c,dist/lib/%.o,$(C_SOURCES))
 LINKER_FLAGS=
 
 native-router:
-	@make -B -j$(shell nproc) all --no-print-directory
+	@make -B all --no-print-directory
 
 all: src/lib/router.so src/lib/index.ts src/lib/router
 clean:

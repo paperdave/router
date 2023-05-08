@@ -9,14 +9,15 @@ const lines = text
   .filter((x) => x.trim() !== "" && !x.startsWith("/*"));
 
 const filteredSymbols = [
-  "parambuf_init",
+  "jserror_get",
   "parambuf_free",
-  "router_new",
-  "router_free",
+  "parambuf_init",
   "router_add",
   "router_find",
+  "router_free",
+  "router_new",
   "router_print",
-  "jserror_get",
+  "router_print_json",
 ];
 
 const types: Dict<string> = {

@@ -21,6 +21,15 @@ export interface FindResult<
   params: Params;
 }
 
+export interface JSONNode<T> {
+  store: T;
+  part: string;
+  children: Record<string, JSONNode<T>>;
+  param?: JSONNode<T>;
+  wildcard?: JSONNode<T>;
+}
+export type JSONRouter<T> = Record<string, JSONNode<T>>;
+
 export class Router<T> {
   #ptr: Pointer;
   #routes: { store: T; paramNames: string[] }[] = [];
@@ -85,6 +94,26 @@ export class Router<T> {
 
   print() {
     ffi.router_print(this.#ptr);
+  }
+
+  toJSON(): JSONRouter<T> {
+    let routes = this.#routes;
+    const obj = JSON.parse("" + ffi.router_print_json(this.#ptr));
+    function traverse(obj: any) {
+      if (obj.id) {
+        obj.store = routes[obj.id - 1]?.store;
+      }
+      delete obj.id;
+      for (const key in obj.children) {
+        traverse(obj.children[key]);
+      }
+      if (obj.param) traverse(obj.param);
+      if (obj.wildcard) traverse(obj.wildcard);
+    }
+    for (const key in obj) {
+      traverse(obj[key]);
+    }
+    return obj as JSONRouter<T>;
   }
 
   free() {
