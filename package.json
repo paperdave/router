@@ -1,5 +1,4 @@
 {
-  "name": "native-router",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {

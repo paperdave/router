@@ -9,6 +9,7 @@ group("simple (no params)", () => {
   bench("native", () => {
     native.find("GET", "/api/ffi");
   });
+  console.log(native.toJSON());
   const memoirist = new Memoirist();
   memoirist.add("GET", "/api/ffi", "first");
   memoirist.add("GET", "/api/abc", "second");

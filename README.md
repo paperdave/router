@@ -1,8 +1,10 @@
-# bun-router
+# native router
 
 HTTP router library for Bun written in native C.
 
-This is intended to be used by framework authors, as it only does routing, and not have a server, handlers, requests, etc. It instead just maps a method and path to an arbitrary value. You can put route metadata or a callback function there.
+Implementation roughly on memoirist by SaltyAOM.
+
+Unfortunatly, even when writing in C, it performs much slower than memoirist due to the overhead of FFI calls and encoding a buffer.
 
 ```ts
 import { NativeRouter } from "./src";
@@ -15,4 +17,4 @@ console.log(x.find("GET", "/users/dave/name"));
 // -> { store: { id: "get name" }, params: { user: "dave" } }
 ```
 
-Implementation roughly on memoirist by SaltyAOM.
+This is intended to be used by framework authors, as it only does routing, and not have a server, handlers, requests, etc. It instead just maps a method and path to an arbitrary value. You can put route metadata or a callback function there.
