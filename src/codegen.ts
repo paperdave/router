@@ -1,7 +1,7 @@
 const files = process.argv.slice(2);
 const headers = Bun.spawnSync({
   cmd: ["cproto", ...files],
-  cwd: import.meta.dir + "/../../",
+  cwd: import.meta.dir + "/../",
 });
 const text = headers.stdout.toString("utf-8");
 const lines = text
