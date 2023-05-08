@@ -1,0 +1,31 @@
+{
+  "files.associations": {
+    "*.{setting,comp,fuse,fu}": "lua",
+    "*.ctk": "json",
+    "*.json5": "json5",
+    "*.json": "jsonc",
+    "*.scriptlib": "lua",
+    "string.h": "c",
+    "stdbool.h": "c",
+    "stdlib.h": "c",
+    "chrono": "c",
+    "variant": "c",
+    "typeindex": "c",
+    "typeinfo": "c",
+    "atomic": "c",
+    "array": "c",
+    "hash_map": "c",
+    "deque": "c",
+    "forward_list": "c",
+    "list": "c",
+    "string": "c",
+    "unordered_map": "c",
+    "unordered_set": "c",
+    "vector": "c",
+    "string_view": "c",
+    "format": "c",
+    "initializer_list": "c",
+    "span": "c",
+    "valarray": "c"
+  }
+}
