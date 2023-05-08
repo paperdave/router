@@ -1,10 +1,10 @@
-# native router
+# bun ffi router
 
-HTTP router library for Bun written in native C.
+HTTP router library for Bun written in native C and FFI
 
-Implementation roughly on memoirist by SaltyAOM.
+Implementation roughly on memoirist by SaltyAOM
 
-Unfortunatly, even when writing in C, it performs much slower than memoirist due to the overhead of FFI calls and encoding a buffer.
+Unfortunatly, even when writing in C, it performs much slower than memoirist due to the overhead of FFI calls and encoding a buffer, so this project remains unfinished. Might finish it just to say I can write a Radix Tree, but meh.
 
 ```ts
 import { NativeRouter } from "./src";
