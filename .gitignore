@@ -1,4 +1,5 @@
 node_modules
 *.so
-/router
 dist
+zig-cache
+zig-out
